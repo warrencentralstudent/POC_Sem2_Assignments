@@ -24,8 +24,6 @@ class Rectangle:
  
  
  
-#YOUDO>  create two rectangles.  print their base, height, perimeter, and area
-#using only the methods not the fields/property/attributes
 
 rectangle1 = Rectangle(4 , 5)
 print("The base of rectangle1 is", rectangle1.get_base())
