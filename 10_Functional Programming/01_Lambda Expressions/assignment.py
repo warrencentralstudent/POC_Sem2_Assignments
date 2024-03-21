@@ -1,6 +1,6 @@
 product = lambda a, b: a * b
-quotient = lambda 
-exponent = lambda
+quotient = lambda a, b: a/b
+exponent = lambda a, b: a**b  
 
 print(product(15, 13))
 print(quotient(15, 13))
