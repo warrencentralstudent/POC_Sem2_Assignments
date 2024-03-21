@@ -1,6 +1,8 @@
 product = lambda a, b: a * b
-#YOUDO for quotient
-#YOUDO for exponent
+quotient = lambda 
+exponent = lambda
 
 print(product(15, 13))
+print(quotient(15, 13))
+print(exponent(3, 7))
 
