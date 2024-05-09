@@ -94,15 +94,15 @@ class Ball(GameObject):
 
 class Paddle(GameObject):
     def __init__(self, canvas, x, y):  #(x, y) is the center of the paddle
-        #YOUDO-09:  create a width variable for self and set to 80
-        #YOUDO-10:  create a height variable for self and set to 10
-        #YOUDO-11:  create a ball variable for self and set to None
-        #YOUDO-12:  create an x1 variable and set to x - self's width / 2
-        #YOUDO-13:  create an y1 variable and set to y - self's height / 2
-        #YOUDO-14:  create an x2 variable and set to x + self's width / 2
-        #YOUDO-15:  create an y2 variable and set to y + self's height / 2
-        #YOUDO-16:  create a color variable and set to "blue"
-        #YOUDO-17:  use create_rectangle on canvas to create an item variable with x1, y1, x2, y2, color
+        self.width = 80 
+        self.height = 10  
+        self.ball = None
+        x1 = x - self.width / 2 
+        y1 = y - self.height / 2 
+        x2 = x + self.width / 2 
+        y2 = y + self.height / 2
+        color = "blue"
+        item = canvas.create_rectangle(x1, y1, x2, y2, color)
         super(Paddle, self).__init__(canvas, item)
         
 
@@ -125,15 +125,15 @@ class Brick(GameObject):
     COLORS = {1 : "#999999", 2 : "#555555", 3 : "#222222"}
 
     def __init__(self, canvas, x, y, hits):
-        #YOUDO-18:  create a width variable for self and initialize to 75
-        #YOUDO-19:  create a height variable for self and initialize to 20
-        #YOUDO-20:  create a hits variable for self and initialize to hits 
+        self.width = 75
+        self.height = 20
+        self.hits = hits
         color = Brick.COLORS[hits]
-        #YOUDO-21:  create an x1 variable and set to x - self's width / 2
-        #YOUDO-22:  create an y1 variable and set to y - self's height / 2
-        #YOUDO-23:  create an x2 variable and set to x + self's width / 2
-        #YOUDO-24:  create an y2 variable and set to y + self's height / 2
-        #YOUDO-25:  use create_rectangle on canvas to create an item variable with x1, y1, x2, y2, color, tags="brick"        
+        x1 = x - self.width / 2 
+        y1 = y - self.height / 2 
+        x2 = x + self.width / 2 
+        y2 = y + self.height / 2
+        item = canvas.create_rectangle(x1, y1, x2, y2, color, tags="brick")       
         super(Brick, self).__init__(canvas, item)
 
     def hit(self):
