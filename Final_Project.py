@@ -63,7 +63,7 @@ class Game(tk.Frame):
         self.game_loop()
 
     def game_loop(self):
-        self.check_collisions
+        self.check_collisions()
         num_bricks = len(self.canvas.find_withtag("brick"))
         if num_bricks == 0:
             self.ball.speed = None
@@ -77,10 +77,10 @@ class Game(tk.Frame):
                 self.after(1000, self.setup_game)
         else:
             self.ball.update()
-            self.after(50, self.game_loop())
+            self.after(50, self.game_loop)
 
     def check_collisions(self):
-        ball_coords = self.get_position
+        ball_coords = self.ball.get_position()
         items = self.canvas.find_overlapping(*ball_coords)
         objects = [self.items[x] for x in items if x in self.items]
         self.ball.collide(objects)
@@ -126,13 +126,12 @@ class Ball(GameObject):
     
     def collide(self, game_objects):
         coords = self.get_position()
-        x = coords[0] + coords[2] / 2 
+        x = (coords[0] + coords[2]) / 2 
         if len(game_objects) > 1:
-            #YOUDO-32:  flip the direction like we did in update for the y direction (index 1)
-            pass  #YOUDO-33:  remove this when done
+            self.direction[1] *= -1
         elif len(game_objects) == 1:
             game_object = game_objects[0]
-            #YOUDO-34:  create a coords variable for game_object from get_position like before
+            coords = game_object.get_position()
             if x > coords[2]:
                 self.direction[0] = 1
             elif x < coords[0]:
@@ -189,9 +188,11 @@ class Brick(GameObject):
         super(Brick, self).__init__(canvas, item)
 
     def hit(self):
-        self.hits - 1
+        self.hits -= 1
         if self.hits == 0:
             self.delete()
+        
+        
         else: 
             self.canvas.itemconfig(self.item, fill=Brick.COLORS[self.hits])  
 
